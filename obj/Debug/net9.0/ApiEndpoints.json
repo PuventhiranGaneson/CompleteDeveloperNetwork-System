@@ -1,0 +1,244 @@
+[
+  {
+    "ContainingType": "CompleteDeveloperNetwork_System.Controllers.DevelopersController",
+    "Method": "GetDevelopers",
+    "RelativePath": "api/Developers",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CompleteDeveloperNetwork_System.Dto.DeveloperDto, CompleteDeveloperNetwork-System, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CompleteDeveloperNetwork_System.Controllers.DevelopersController",
+    "Method": "CreateDeveloper",
+    "RelativePath": "api/Developers",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "CompleteDeveloperNetwork_System.Dto.CreateDeveloperDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "CompleteDeveloperNetwork_System.Dto.DeveloperDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CompleteDeveloperNetwork_System.Controllers.DevelopersController",
+    "Method": "GetDeveloper",
+    "RelativePath": "api/Developers/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "CompleteDeveloperNetwork_System.Models.Developers",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CompleteDeveloperNetwork_System.Controllers.DevelopersController",
+    "Method": "UpdateDeveloper",
+    "RelativePath": "api/Developers/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "CompleteDeveloperNetwork_System.Dto.UpdateDeveloperDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "CompleteDeveloperNetwork_System.Dto.DeveloperDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CompleteDeveloperNetwork_System.Controllers.DevelopersController",
+    "Method": "PatchDeveloper",
+    "RelativePath": "api/Developers/{id}",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "CompleteDeveloperNetwork_System.Dto.PatchDeveloperDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "CompleteDeveloperNetwork_System.Dto.DeveloperDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CompleteDeveloperNetwork_System.Controllers.DevelopersController",
+    "Method": "DeleteDeveloper",
+    "RelativePath": "api/Developers/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CompleteDeveloperNetwork_System.Controllers.ReadHobbiesController",
+    "Method": "GetHobbies",
+    "RelativePath": "api/ReadHobbies",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CompleteDeveloperNetwork_System.Dto.HobbiesDto, CompleteDeveloperNetwork-System, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CompleteDeveloperNetwork_System.Controllers.ReadHobbiesController",
+    "Method": "GetHobbies",
+    "RelativePath": "api/ReadHobbies/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CompleteDeveloperNetwork_System.Dto.HobbiesDto, CompleteDeveloperNetwork-System, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CompleteDeveloperNetwork_System.Controllers.ReadSkillsetsController",
+    "Method": "GetSkillsets",
+    "RelativePath": "api/ReadSkillsets",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CompleteDeveloperNetwork_System.Dto.SkillsetsDto, CompleteDeveloperNetwork-System, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CompleteDeveloperNetwork_System.Controllers.ReadSkillsetsController",
+    "Method": "GetSkillsets",
+    "RelativePath": "api/ReadSkillsets/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CompleteDeveloperNetwork_System.Dto.SkillsetsDto, CompleteDeveloperNetwork-System, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  }
+]

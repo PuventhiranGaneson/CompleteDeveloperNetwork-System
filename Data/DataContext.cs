@@ -12,27 +12,11 @@ namespace CompleteDeveloperNetwork_System.Data
         public DataContext(DbContextOptions<DataContext> options) : base(options)
         {
 
-
         }
 
         public DbSet<Developers> developers { get; set; }
         public DbSet<Skillsets> Skillsets { get; set; }
         public DbSet<Hobbies> Hobbies { get; set; }
-
-        public class DataContextFactory : IDesignTimeDbContextFactory<DataContext>
-        {
-            public DataContext CreateDbContext(string[] args)
-            {
-                var optionsBuilder = new DbContextOptionsBuilder<DataContext>();
-
-                // fallback connection string for design-time
-                optionsBuilder.UseSqlServer(
-                    "Data Source = LAPTOP - T22L9867/SQLEXPRESS; Initial Catalog = CDN; Integrated Security = True; Connect Timeout = 30; Encrypt = False; Trust Server Certificate = False; Application Intent = ReadWrite; Multi Subnet Failover = False");
-
-                return new DataContext(optionsBuilder.Options);
-            }
-        }
-
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -40,13 +24,13 @@ namespace CompleteDeveloperNetwork_System.Data
 
             //explaining relationship between table 
             modelBuilder.Entity<Skillsets>()
-                .HasOne(s => s.developer)
+                .HasOne(s => s.developers)
                 .WithMany(d => d.skillsets)
                 .HasForeignKey(s => s.DeveloperId)
                 .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<Hobbies>()
-                .HasOne(h => h.developer)
+                .HasOne(h => h.developers)
                 .WithMany(d => d.hobbies)
                 .HasForeignKey(h => h.DeveloperId)
                 .OnDelete(DeleteBehavior.Cascade);
@@ -57,7 +41,7 @@ namespace CompleteDeveloperNetwork_System.Data
             // Developers
             modelBuilder.Entity<Developers>().HasData(
                 new Developers { Id = 1, Username = "alice_dev", Email = "alice@example.com", PhoneNumber = "0123456789" },
-                new Developers { Id = 2, Username = "bob_coder", Email = "bob@example.com", PhoneNumber = "0198765432"},
+                new Developers { Id = 2, Username = "bob_coder", Email = "bob@example.com", PhoneNumber = "0198765432" },
                 new Developers { Id = 3, Username = "charlie_pro", Email = "charlie@example.com", PhoneNumber = "0182222333" }
             );
 
@@ -78,8 +62,8 @@ namespace CompleteDeveloperNetwork_System.Data
                 new Hobbies { Id = 4, Name = "Cooking", Description = "Trying new recipes", DeveloperId = 2 },
                 new Hobbies { Id = 5, Name = "Traveling", Description = "Exploring new places", DeveloperId = 3 }
             );
- 
 
-    }
+
+        }
 }
 }

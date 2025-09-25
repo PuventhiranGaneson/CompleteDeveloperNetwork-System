@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CompleteDeveloperNetwork_System.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20250924151210_InitialCreate")]
+    [Migration("20250925031225_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -47,29 +47,6 @@ namespace CompleteDeveloperNetwork_System.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("developers");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Email = "alice@example.com",
-                            PhoneNumber = "0123456789",
-                            Username = "alice_dev"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Email = "bob@example.com",
-                            PhoneNumber = "0198765432",
-                            Username = "bob_coder"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Email = "charlie@example.com",
-                            PhoneNumber = "0182222333",
-                            Username = "charlie_pro"
-                        });
                 });
 
             modelBuilder.Entity("CompleteDeveloperNetwork_System.Models.Hobbies", b =>
@@ -96,43 +73,6 @@ namespace CompleteDeveloperNetwork_System.Migrations
                     b.HasIndex("DeveloperId");
 
                     b.ToTable("Hobbies");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Description = "Weekend rides",
-                            DeveloperId = 1,
-                            Name = "Cycling"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Description = "FPS games",
-                            DeveloperId = 1,
-                            Name = "Gaming"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Description = "Landscape photography",
-                            DeveloperId = 2,
-                            Name = "Photography"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Description = "Trying new recipes",
-                            DeveloperId = 2,
-                            Name = "Cooking"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Description = "Exploring new places",
-                            DeveloperId = 3,
-                            Name = "Traveling"
-                        });
                 });
 
             modelBuilder.Entity("CompleteDeveloperNetwork_System.Models.Skillsets", b =>
@@ -159,65 +99,28 @@ namespace CompleteDeveloperNetwork_System.Migrations
                     b.HasIndex("DeveloperId");
 
                     b.ToTable("Skillsets");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Description = "Backend development",
-                            DeveloperId = 1,
-                            Name = "C#"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Description = "Frontend development",
-                            DeveloperId = 1,
-                            Name = "React"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Description = "AI/ML coding",
-                            DeveloperId = 2,
-                            Name = "Python"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Description = "Database management",
-                            DeveloperId = 2,
-                            Name = "SQL"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Description = "Enterprise systems",
-                            DeveloperId = 3,
-                            Name = "Java"
-                        });
                 });
 
             modelBuilder.Entity("CompleteDeveloperNetwork_System.Models.Hobbies", b =>
                 {
-                    b.HasOne("CompleteDeveloperNetwork_System.Models.Developers", "developer")
+                    b.HasOne("CompleteDeveloperNetwork_System.Models.Developers", "developers")
                         .WithMany("hobbies")
                         .HasForeignKey("DeveloperId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("developer");
+                    b.Navigation("developers");
                 });
 
             modelBuilder.Entity("CompleteDeveloperNetwork_System.Models.Skillsets", b =>
                 {
-                    b.HasOne("CompleteDeveloperNetwork_System.Models.Developers", "developer")
+                    b.HasOne("CompleteDeveloperNetwork_System.Models.Developers", "developers")
                         .WithMany("skillsets")
                         .HasForeignKey("DeveloperId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("developer");
+                    b.Navigation("developers");
                 });
 
             modelBuilder.Entity("CompleteDeveloperNetwork_System.Models.Developers", b =>
