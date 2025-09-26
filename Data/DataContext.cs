@@ -40,9 +40,9 @@ namespace CompleteDeveloperNetwork_System.Data
 
             // Developers
             modelBuilder.Entity<Developers>().HasData(
-                new Developers { Id = 1, Username = "alice_dev", Email = "alice@example.com", PhoneNumber = "0123456789" },
-                new Developers { Id = 2, Username = "bob_coder", Email = "bob@example.com", PhoneNumber = "0198765432" },
-                new Developers { Id = 3, Username = "charlie_pro", Email = "charlie@example.com", PhoneNumber = "0182222333" }
+                new Developers { Id = 1, Username = "alice_dev", Email = "alice@example.com", PhoneNumber = "0123456789", Udatetime = new DateTime(2025, 09, 25), IsActive = 1 },
+                new Developers { Id = 2, Username = "bob_coder", Email = "bob@example.com", PhoneNumber = "0198765432", Udatetime = new DateTime(2025, 09, 25), IsActive = 1 },
+                new Developers { Id = 3, Username = "charlie_pro", Email = "charlie@example.com", PhoneNumber = "0182222333", Udatetime = new DateTime(2025, 09, 25), IsActive = 1 }
             );
 
             // Skillsets

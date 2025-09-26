@@ -19,7 +19,7 @@ namespace CompleteDeveloperNetwork_System.Controllers
 
         // ✅ GET all developers
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<DeveloperDto>>> GetDevelopers()
+        public async Task<ActionResult<IEnumerable<DeveloperDto>>> GetDeveloper()
         {
             var devs = await _context.developers
                 .Include(d => d.skillsets)
@@ -37,32 +37,61 @@ namespace CompleteDeveloperNetwork_System.Controllers
             return Ok(devs);
         }
 
-
-        //GET developer by ID
         [HttpGet("{id}")]
-        public async Task<ActionResult<Developers>> GetDeveloper(int id)
+        public async Task<ActionResult<DeveloperDto>> GetDeveloperById(int id)
         {
             var dev = await _context.developers
-                                    .Include(d => d.skillsets)
-                                    .Include(d => d.hobbies)
-                                    .FirstOrDefaultAsync(d => d.Id == id);
-
+                .Include(d => d.skillsets)
+                .Include(d => d.hobbies)
+                .FirstOrDefaultAsync(d => d.Id == id);
 
             if (dev == null)
                 return NotFound();
 
-            var devDto = new DeveloperDto
+            return Ok(new DeveloperDto
             {
                 Id = dev.Id,
+                Username = dev.Username,
+                Email = dev.Email,
+                Skillsets = dev.skillsets.Select(s => s.Name).ToList(),
+                Hobbies = dev.hobbies.Select(h => h.Name).ToList()
+            });
+        }
+
+
+
+        // GET api/developers/search?username=abc&email=xyz
+        [HttpGet("search")]
+        public async Task<ActionResult<IEnumerable<DeveloperDto>>> SearchDevelopers(
+            [FromQuery] string? username,
+            [FromQuery] string? email)
+        {
+            var query = _context.developers
+                .Include(d => d.skillsets)
+                .Include(d => d.hobbies)
+                .AsQueryable();
+
+            if (!string.IsNullOrWhiteSpace(username))
+                query = query.Where(d => d.Username.Contains(username));
+
+            if (!string.IsNullOrWhiteSpace(email))
+                query = query.Where(d => d.Email.Contains(email));
+
+            var devs = await query.Select(dev => new DeveloperDto
+            {
                 Username = dev.Username,
                 Email = dev.Email,
                 PhoneNumber = dev.PhoneNumber,
                 Skillsets = dev.skillsets.Select(s => s.Name).ToList(),
                 Hobbies = dev.hobbies.Select(h => h.Name).ToList()
-            };
+            }).ToListAsync();
 
-            return Ok(devDto);
+            if (!devs.Any())
+                return NotFound("No matching developers found.");
+
+            return Ok(devs);
         }
+
 
         [HttpPost]
         public async Task<ActionResult<DeveloperDto>> CreateDeveloper(CreateDeveloperDto dto)
@@ -82,7 +111,10 @@ namespace CompleteDeveloperNetwork_System.Controllers
                 {
                     Name = h.Name,
                     Description = h.Description
-                }).ToList()
+                }).ToList(),
+
+                Udatetime = DateTime.Now,   // set timestamp here
+               
             };
 
             _context.developers.Add(developer);
@@ -96,7 +128,9 @@ namespace CompleteDeveloperNetwork_System.Controllers
                 Email = developer.Email,
                 PhoneNumber = developer.PhoneNumber.ToString(),
                 Skillsets = developer.skillsets.Select(s => s.Name).ToList(),
-                Hobbies = developer.hobbies.Select(h => h.Name).ToList()
+                Hobbies = developer.hobbies.Select(h => h.Name).ToList(),
+                Udatetime = developer.Udatetime,
+                IsActive = 1
             };
 
             return CreatedAtAction(nameof(GetDeveloper), new { id = developer.Id }, devDto);
@@ -117,6 +151,7 @@ namespace CompleteDeveloperNetwork_System.Controllers
             developer.Username = dto.Username;
             developer.Email = dto.Email;
             developer.PhoneNumber = dto.PhoneNumber;
+            developer.Udatetime = DateTime.Now;
 
             // Clear and re-add skillsets
             developer.skillsets.Clear();
@@ -146,7 +181,7 @@ namespace CompleteDeveloperNetwork_System.Controllers
                 Email = developer.Email,
                 PhoneNumber = developer.PhoneNumber.ToString(),
                 Skillsets = developer.skillsets.Select(s => s.Name).ToList(),
-                Hobbies = developer.hobbies.Select(h => h.Name).ToList()
+                Udatetime = developer.Udatetime
             };
 
             return Ok(devDto);

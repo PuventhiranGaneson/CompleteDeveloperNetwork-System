@@ -1,7 +1,7 @@
 [
   {
     "ContainingType": "CompleteDeveloperNetwork_System.Controllers.DevelopersController",
-    "Method": "GetDevelopers",
+    "Method": "GetDeveloper",
     "RelativePath": "api/Developers",
     "HttpMethod": "GET",
     "IsController": true,
@@ -47,7 +47,7 @@
   },
   {
     "ContainingType": "CompleteDeveloperNetwork_System.Controllers.DevelopersController",
-    "Method": "GetDeveloper",
+    "Method": "GetDeveloperById",
     "RelativePath": "api/Developers/{id}",
     "HttpMethod": "GET",
     "IsController": true,
@@ -61,7 +61,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "CompleteDeveloperNetwork_System.Models.Developers",
+        "Type": "CompleteDeveloperNetwork_System.Dto.DeveloperDto",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -148,6 +148,37 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CompleteDeveloperNetwork_System.Controllers.DevelopersController",
+    "Method": "SearchDevelopers",
+    "RelativePath": "api/Developers/search",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "username",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "email",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CompleteDeveloperNetwork_System.Dto.DeveloperDto, CompleteDeveloperNetwork-System, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "CompleteDeveloperNetwork_System.Controllers.ReadHobbiesController",
