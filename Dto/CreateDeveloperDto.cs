@@ -1,29 +1,23 @@
-﻿namespace CompleteDeveloperNetwork_System.Dto
+﻿using CompleteDeveloperNetwork_System.Dto;
+using MediatR;
+using System.Collections.Generic;
+
+public record CreateDeveloperCommand(
+    string Username,
+    string Email,
+    string PhoneNumber,
+    List<SkillsetDto> Skillsets,
+    List<HobbyDto> Hobbies
+) : IRequest<DeveloperDto>;
+
+public class SkillsetDto
 {
-    public class CreateDeveloperDto
-    {
-       
-            public string Username { get; set; }
-            public string Email { get; set; }
-            public string PhoneNumber { get; set; }
-            public DateTime Udatetime { get; set; }
-            public int IsActive { get; set; }
+    public string Name { get; set; }
+    public string Description { get; set; }
+}
 
-        public List<SkillsetDto> Skillsets { get; set; }
-            public List<HobbyDto> Hobbies { get; set; }
-        }
-
-        public class SkillsetDto
-        {
-            public string Name { get; set; }
-            public string Description { get; set; }
-        }
-
-        public class HobbyDto
-        {
-            public string Name { get; set; }
-            public string Description { get; set; }
-        }
-
-    
+public class HobbyDto
+{
+    public string Name { get; set; }
+    public string Description { get; set; }
 }

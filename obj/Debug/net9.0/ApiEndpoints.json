@@ -28,8 +28,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "dto",
-        "Type": "CompleteDeveloperNetwork_System.Dto.CreateDeveloperDto",
+        "Name": "command",
+        "Type": "CreateDeveloperCommand",
         "IsRequired": true
       }
     ],

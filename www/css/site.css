@@ -1,0 +1,41 @@
+﻿body {
+    font-family: Arial, sans-serif;
+    background: #f9f9f9;
+    margin: 20px;
+    color: #333;
+    background-color: yellow !important;
+
+}
+
+.title {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+.dev-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: auto;
+    background: white;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+    .dev-table th, .dev-table td {
+        padding: 12px 15px;
+        border: 1px solid #ddd;
+        text-align: center;
+    }
+
+    .dev-table th {
+        background: #2c3e50;
+        color: white;
+    }
+
+    .dev-table tr:nth-child(even) {
+        background: #f2f2f2;
+    }
+
+    .dev-table tr:hover {
+        background: #d1ecf1;
+    }

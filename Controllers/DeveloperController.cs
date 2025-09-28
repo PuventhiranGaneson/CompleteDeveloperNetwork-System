@@ -1,6 +1,7 @@
 ﻿using CompleteDeveloperNetwork_System.Data;
 using CompleteDeveloperNetwork_System.Dto;
 using CompleteDeveloperNetwork_System.Models;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -11,7 +12,7 @@ namespace CompleteDeveloperNetwork_System.Controllers
     public class DevelopersController : ControllerBase
     {
         private readonly DataContext _context;
-
+        private readonly IMediator _mediator;
         public DevelopersController(DataContext context)
         {
             _context = context;
@@ -94,46 +95,10 @@ namespace CompleteDeveloperNetwork_System.Controllers
 
 
         [HttpPost]
-        public async Task<ActionResult<DeveloperDto>> CreateDeveloper(CreateDeveloperDto dto)
+        public async Task<ActionResult<DeveloperDto>> CreateDeveloper([FromBody] CreateDeveloperCommand command)
         {
-            // Create developer
-            var developer = new Developers
-            {
-                Username = dto.Username,
-                Email = dto.Email,
-                PhoneNumber = dto.PhoneNumber, // or keep as string if you changed it
-                skillsets = dto.Skillsets?.Select(s => new Skillsets
-                {
-                    Name = s.Name,
-                    Description = s.Description
-                }).ToList(),
-                hobbies = dto.Hobbies?.Select(h => new Hobbies
-                {
-                    Name = h.Name,
-                    Description = h.Description
-                }).ToList(),
-
-                Udatetime = DateTime.Now,   // set timestamp here
-               
-            };
-
-            _context.developers.Add(developer);
-            await _context.SaveChangesAsync();
-
-            // Map back to DTO for response
-            var devDto = new DeveloperDto
-            {
-                Id = developer.Id,
-                Username = developer.Username,
-                Email = developer.Email,
-                PhoneNumber = developer.PhoneNumber.ToString(),
-                Skillsets = developer.skillsets.Select(s => s.Name).ToList(),
-                Hobbies = developer.hobbies.Select(h => h.Name).ToList(),
-                Udatetime = developer.Udatetime,
-                IsActive = 1
-            };
-
-            return CreatedAtAction(nameof(GetDeveloper), new { id = developer.Id }, devDto);
+            var result = await _mediator.Send(command);
+            return CreatedAtAction(nameof(GetDeveloper), new { id = result.Id }, result);
         }
 
         [HttpPut("{id}")]
