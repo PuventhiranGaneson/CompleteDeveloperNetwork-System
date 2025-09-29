@@ -1,0 +1,529 @@
+﻿@page "{id:int}"
+@model CompleteDeveloperNetwork_System.Pages.Index1Model
+@{
+    ViewData["Title"] = " Update Developers Info";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Developer</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .form-card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 40px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+            .back-link:hover {
+                color: #764ba2;
+                transform: translateX(-5px);
+            }
+
+        .form-title {
+            color: #2d3748;
+            font-weight: 700;
+            margin-bottom: 10px;
+            font-size: 2rem;
+            text-align: center;
+        }
+
+        .form-subtitle {
+            text-align: center;
+            color: #718096;
+            margin-bottom: 30px;
+            font-size: 0.95rem;
+        }
+
+        .form-label {
+            color: #2d3748;
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+            .form-label i {
+                color: #667eea;
+                font-size: 0.9rem;
+            }
+
+        .form-control {
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 12px 15px;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+            .form-control:focus {
+                border-color: #667eea;
+                box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+                outline: none;
+            }
+
+            .form-control:disabled {
+                background-color: #f7fafc;
+                cursor: not-allowed;
+            }
+
+        .text-muted {
+            color: #a0aec0 !important;
+            font-size: 0.85rem;
+        }
+
+        .hint-text {
+            color: #718096;
+            font-size: 0.85rem;
+            margin-top: 5px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+            .hint-text i {
+                color: #667eea;
+            }
+
+        .form-section {
+            background: #f7fafc;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            border-left: 4px solid #667eea;
+        }
+
+        .form-section-title {
+            color: #2d3748;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+            .button-group button {
+                flex: 1;
+            }
+
+        .btn-custom {
+            padding: 14px 30px;
+            border-radius: 10px;
+            border: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn-save {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+            .btn-save:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+            }
+
+            .btn-save:disabled {
+                opacity: 0.6;
+                cursor: not-allowed;
+                transform: none;
+            }
+
+        .btn-cancel {
+            background: #e2e8f0;
+            color: #4a5568;
+        }
+
+            .btn-cancel:hover {
+                background: #cbd5e0;
+                color: #2d3748;
+            }
+
+        .loading-spinner {
+            display: none;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+
+
+        .alert-custom {
+            border-radius: 10px;
+            border: none;
+            padding: 15px 20px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .alert-success-custom {
+            background: #c6f6d5;
+            color: #22543d;
+        }
+
+        .alert-error-custom {
+            background: #fed7d7;
+            color: #742a2a;
+        }
+
+        .loading-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #a0aec0;
+        }
+
+            .loading-state i {
+                font-size: 3rem;
+                animation: spin 1s linear infinite;
+            }
+
+        .id-badge {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form-card">
+            <a href="/" class="back-link">
+                <i class="fas fa-arrow-left"></i>
+                Back to Directory
+            </a>
+
+            <div id="loadingState" class="loading-state">
+                <i class="fas fa-spinner"></i>
+                <p>Loading developer information...</p>
+            </div>
+
+            <div id="formContent" style="display: none;">
+                <h2 class="form-title">
+                    <i class="fas fa-user-edit"></i> Edit Developer
+                </h2>
+                <p class="form-subtitle">Update developer information</p>
+                <div class="text-center">
+                    <span class="id-badge" id="developerIdBadge"></span>
+                </div>
+
+                <div id="alertBox" class="alert-custom"></div>
+
+                <form id="editForm" onsubmit="return updateDeveloper(event)">
+                    <!-- Personal Information Section -->
+                    <div class="form-section">
+                        <div class="form-section-title">
+                            <i class="fas fa-user-circle"></i>
+                            Personal Information
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">
+                                <i class="fas fa-user"></i>
+                                Username
+                            </label>
+                            <input type="text" class="form-control" id="username" required placeholder="Enter username" />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">
+                                <i class="fas fa-envelope"></i>
+                                Email Address
+                            </label>
+                            <input type="email" class="form-control" id="email" required placeholder="developer@example.com" />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">
+                                <i class="fas fa-phone"></i>
+                                Phone Number
+                            </label>
+                            <input type="tel" class="form-control" id="phone" placeholder="+1 234-567-8900" />
+                            <div class="hint-text">
+                                <i class="fas fa-info-circle"></i>
+                                Optional field
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Skills & Interests Section -->
+                    <div class="form-section">
+                        <div class="form-section-title">
+                            <i class="fas fa-code"></i>
+                            Skills & Interests
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">
+                                <i class="fas fa-laptop-code"></i>
+                                Skillsets
+                                <small class="text-muted">(comma separated)</small>
+                            </label>
+                            <input type="text" class="form-control" id="skillsets" placeholder="C#, .NET, SQL, JavaScript" />
+                            <div class="hint-text">
+                                <i class="fas fa-info-circle"></i>
+                                Enter technical skills separated by commas
+                            </div>
+                            <textarea class="form-control" id="description" rows="3" placeholder="Write a short description about skillsets"></textarea>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">
+                                <i class="fas fa-heart"></i>
+                                Hobbies
+                                <small class="text-muted">(comma separated)</small>
+                            </label>
+                            <input type="text" class="form-control" id="hobbies" placeholder="Gaming, Reading, Photography" />
+                            <div class="hint-text">
+                                <i class="fas fa-info-circle"></i>
+                                Share personal interests and hobbies
+                            </div>
+                        </div>
+                        <textarea class="form-control" id="description" rows="3" placeholder="Write a short description about hobbies"></textarea>
+                    </div>
+
+                    <!-- Status Section -->
+                    <div class="form-section">
+                        <div class="form-section-title">
+                            <i class="fas fa-toggle-on"></i>
+                            Status
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">
+                                <i class="fas fa-circle-check"></i>
+                                Account Status
+                            </label>
+                            <select class="form-control" id="isActive">
+                                <option value="1">Active</option>
+                                <option value="0">Inactive</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="button-group">
+                        <button type="button" class="btn-custom btn-cancel" onclick="window.history.back()">
+                            <i class="fas fa-times"></i>
+                            Cancel
+                        </button>
+                        <button type="submit" class="btn-custom btn-save" id="submitBtn">
+                            <span id="btnText">
+                                <i class="fas fa-save"></i>
+                                Update Developer
+                            </span>
+                            <div class="loading-spinner" id="loadingSpinner"></div>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const developerId = urlParams.get('id') || window.location.pathname.split('/').pop();
+
+        const loadingState = document.getElementById('loadingState');
+        const formContent = document.getElementById('formContent');
+        const alertBox = document.getElementById('alertBox');
+        const submitBtn = document.getElementById('submitBtn');
+        const btnText = document.getElementById('btnText');
+        const loadingSpinner = document.getElementById('loadingSpinner');
+
+        let originalData = {};
+
+        function showAlert(message, type) {
+            alertBox.className = `alert-custom alert-${type}-custom`;
+            alertBox.innerHTML = `
+                <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'}"></i>
+                ${message}
+            `;
+            alertBox.style.display = 'block';
+
+            if (type === 'success') {
+                setTimeout(() => {
+                    alertBox.style.display = 'none';
+                }, 3000);
+            }
+
+            // Scroll to top to show alert
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        async function loadDeveloperData() {
+            try {
+                const response = await fetch(`http://localhost:5102/api/Developers/${developerId}`);
+
+                if (!response.ok) {
+                    throw new Error('Developer not found');
+                }
+
+                const developer = await response.json();
+                originalData = developer;
+                populateForm(developer);
+
+            } catch (error) {
+                console.error('Error loading developer:', error);
+                showAlert('Failed to load developer information. Please try again.', 'error');
+                setTimeout(() => {
+                    window.location.href = '/';
+                }, 2000);
+            }
+        }
+
+        function populateForm(dev) {
+            loadingState.style.display = 'none';
+            formContent.style.display = 'block';
+
+            // Set ID badge
+            document.getElementById('developerIdBadge').textContent = `Developer ID: ${dev.id}`;
+
+            // Populate form fields
+            document.getElementById('username').value = dev.username || '';
+            document.getElementById('email').value = dev.email || '';
+            document.getElementById('phone').value = dev.phoneNumber || '';
+            document.getElementById('isActive').value = dev.isActive || 0;
+
+            // Populate skillsets (convert array to comma-separated string)
+            if (dev.skillsets && dev.skillsets.length > 0) {
+                document.getElementById('skillsets').value = dev.skillsets.join(', ');
+            }
+
+            // Populate hobbies (convert array to comma-separated string)
+            if (dev.hobbies && dev.hobbies.length > 0) {
+                document.getElementById('hobbies').value = dev.hobbies.join(', ');
+            }
+        }
+
+        async function updateDeveloper(e) {
+            e.preventDefault();
+
+            // Disable button and show loading
+            submitBtn.disabled = true;
+            btnText.style.display = 'none';
+            loadingSpinner.style.display = 'block';
+
+            try {
+                const updatedDev = {
+                    id: originalData.id,
+                    username: document.getElementById('username').value.trim(),
+                    email: document.getElementById('email').value.trim(),
+                    phoneNumber: document.getElementById('phone').value.trim() || null,
+                    isActive: parseInt(document.getElementById('isActive').value),
+                            skillsets: document.getElementById('skillsets').value
+            .split(',')
+            .filter(s => s.trim() !== '')
+            .map(s => ({
+                name: s.trim(),
+                description: ""   // or collect from another input if needed
+            })),
+
+        hobbies: document.getElementById('hobbies').value
+            .split(',')
+            .filter(h => h.trim() !== '')
+            .map(h => ({
+                name: h.trim(),
+                description: ""   // same here
+            }))
+
+                };
+
+                const response = await fetch(`http://localhost:5102/api/Developers/${developerId}`, {
+                    method: 'PATCH',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(updatedDev)
+                });
+
+                if (response.ok) {
+                    showAlert('Developer updated successfully! Redirecting...', 'success');
+                    setTimeout(() => {
+                        window.location.href = `/`;
+                    }, 1500);
+                } else {
+                    const error = await response.text();
+                    showAlert(`Failed to update developer: ${error}`, 'error');
+                    submitBtn.disabled = false;
+                    btnText.style.display = 'flex';
+                    loadingSpinner.style.display = 'none';
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                showAlert('An error occurred while updating. Please try again.', 'error');
+                submitBtn.disabled = false;
+                btnText.style.display = 'flex';
+                loadingSpinner.style.display = 'none';
+            }
+
+            return false;
+        }
+
+        // Input validation feedback
+        const inputs = document.querySelectorAll('.form-control');
+        inputs.forEach(input => {
+            input.addEventListener('blur', function() {
+                if (this.value.trim() !== '' || this.hasAttribute('required')) {
+                    if (this.checkValidity()) {
+                        this.style.borderColor = '#48bb78';
+                    } else {
+                        this.style.borderColor = '#f56565';
+                    }
+                }
+            });
+
+            input.addEventListener('focus', function() {
+                this.style.borderColor = '#667eea';
+            });
+        });
+
+        // Load developer data on page load
+        loadDeveloperData();
+    </script>
+</body>
+</html>

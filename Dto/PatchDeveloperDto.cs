@@ -6,6 +6,7 @@
             public string? Username { get; set; }
             public string? Email { get; set; }
             public string? PhoneNumber { get; set; }
+            public int? IsActive { get; set; }
 
             public List<SkillsetDto>? Skillsets { get; set; }
             public List<HobbyDto>? Hobbies { get; set; }

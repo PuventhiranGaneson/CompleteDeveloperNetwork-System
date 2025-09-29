@@ -1,123 +1,395 @@
 ﻿@page
 @model CompleteDeveloperNetwork_System.Pages.IndexModel
 @{
-    ViewData["Title"] = "Developers";
+    ViewData["Title"] = "List of Developers";
 }
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
-
-<style>
-    body {
-        background: linear-gradient(135deg, #74ebd5 0%, #ACB6E5 100%);
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        padding: 30px;
-    }
-
-    .page-title {
-        text-align: center;
-        color: #2c3e50;
-        margin-bottom: 30px;
-        font-weight: bold;
-        animation: fadeIn 0.6s ease-in-out;
-    }
-
-    .table-container {
-        background: #fff;
-        border-radius: 12px;
-        padding: 20px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-        animation: fadeIn 0.7s ease-in-out;
-    }
-
-    table th {
-        background: #2c3e50;
-        color: #fff;
-        text-align: center;
-        font-weight: 600;
-    }
-
-    table td {
-        vertical-align: middle;
-        text-align: center;
-    }
-
-    .btn-custom {
-        background: #2c3e50;
-        color: white;
-        font-weight: 500;
-        transition: all 0.3s ease;
-    }
-
-        .btn-custom:hover {
-            background: #1a242f;
-            transform: scale(1.05);
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Developer Directory</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-    /* @keyframes fadeIn {
-        from{
+        .main-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
 
-    
-        opacity: 0;
-        transform: translateY(-10px);
-    }
+        .header-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #667eea;
+        }
 
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+            .header-section h2 {
+                color: #2d3748;
+                font-weight: 700;
+                margin: 0;
+                font-size: 2rem;
+            }
 
-    } */
-</style>
+            .header-section .icon {
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                color: white;
+                width: 50px;
+                height: 50px;
+                border-radius: 12px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 1.5rem;
+            }
 
-<h1 class="page-title">Developers</h1>
+        .search-bar {
+            margin-bottom: 25px;
+            position: relative;
+        }
 
-<div class="d-flex justify-content-end mb-3">
-    <button onclick="location.href='/Create'" class="btn btn-custom">➕ Add Developer</button>
-</div>
+            .search-bar input {
+                padding: 12px 20px 12px 45px;
+                border: 2px solid #e2e8f0;
+                border-radius: 10px;
+                width: 100%;
+                font-size: 0.95rem;
+                transition: all 0.3s ease;
+            }
 
-<div class="table-container">
-    <table class="table table-striped table-hover align-middle">
-        <thead>
-            <tr>
-                <th>Username</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Skillsets</th>
-                <th>Hobbies</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody id="devTable"></tbody>
-    </table>
-</div>
+                .search-bar input:focus {
+                    outline: none;
+                    border-color: #667eea;
+                    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+                }
 
-@section Scripts {
+            .search-bar i {
+                position: absolute;
+                left: 15px;
+                top: 50%;
+                transform: translateY(-50%);
+                color: #a0aec0;
+            }
+
+        .table-container {
+            overflow-x: auto;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .custom-table {
+            margin-bottom: 0;
+            background: white;
+        }
+
+            .custom-table thead {
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                color: white;
+            }
+
+                .custom-table thead th {
+                    border: none;
+                    padding: 18px 15px;
+                    font-weight: 600;
+                    text-transform: uppercase;
+                    font-size: 0.85rem;
+                    letter-spacing: 0.5px;
+                    vertical-align: middle;
+                }
+
+            .custom-table tbody tr {
+                transition: all 0.3s ease;
+                border-bottom: 1px solid #e2e8f0;
+            }
+
+                .custom-table tbody tr:hover {
+                    background-color: #f7fafc;
+                    transform: scale(1.01);
+                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+                }
+
+            .custom-table tbody td {
+                padding: 16px 15px;
+                vertical-align: middle;
+                color: #4a5568;
+            }
+
+            .custom-table tbody tr:last-child {
+                border-bottom: none;
+            }
+
+        .badge-skill, .badge-hobby {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin: 3px;
+            font-weight: 500;
+        }
+
+        .badge-skill {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .badge-hobby {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+        }
+
+        .btn-add {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            padding: 14px 30px;
+            border-radius: 10px;
+            color: white;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+            .btn-add:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+                color: white;
+            }
+
+            .btn-add i {
+                font-size: 1.1rem;
+            }
+
+        .action-buttons {
+            display: flex;
+            gap: 8px;
+        }
+
+        .btn-action {
+            padding: 8px 12px;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .btn-edit {
+            background: #48bb78;
+            color: white;
+        }
+
+            .btn-edit:hover {
+                background: #38a169;
+                transform: translateY(-2px);
+            }
+
+        .btn-delete {
+            background: #f56565;
+            color: white;
+        }
+
+            .btn-delete:hover {
+                background: #e53e3e;
+                transform: translateY(-2px);
+            }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #a0aec0;
+        }
+
+            .empty-state i {
+                font-size: 4rem;
+                margin-bottom: 20px;
+                opacity: 0.5;
+            }
+
+        .footer-section {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+       
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="main-container">
+            <div class="header-section">
+                <div style="display: flex; align-items: center; gap: 15px;">
+                    <div class="icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h2>Developer Directory</h2>
+                </div>
+            </div>
+
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" id="searchInput" placeholder="Search by username or email..." class="form-control">
+            </div>
+
+            <div class="table-container">
+                <table class="table custom-table">
+                    <thead>
+                        <tr>
+                            <th><i class="fas fa-user"></i> Username</th>
+                            <th><i class="fas fa-envelope"></i> Email</th>
+                            <th><i class="fas fa-phone"></i> Phone Number</th>
+                            <th><i class="fas fa-code"></i> Skillsets</th>
+                            <th><i class="fas fa-heart"></i> Hobbies</th>
+                            <th><i class="fas fa-cog"></i> Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="devTableBody">
+                        <!-- Data will be loaded from API -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="footer-section">
+                <a class="btn-add" href="/Create">
+                    <i class="fas fa-plus-circle"></i>
+                    Add New Developer
+                </a>
+            </div>
+        </div>
+    </div>
+
     <script>
+        const searchInput = document.getElementById('searchInput');
+        const tableBody = document.getElementById('devTableBody');
+        let developersData = [];
+
+        // Load developers from API
         async function loadDevelopers() {
-            const res = await fetch('/api/developer');
-            const devs = await res.json();
-            let rows = '';
-            devs.forEach(d => {
-                rows += `<tr>
-                            <td><strong>${d.username}</strong></td>
-                            <td>${d.email}</td>
-                            <td>${d.phoneNumber}</td>
-                            <td>${d.skillsets && d.skillsets.length ? d.skillsets.join(", ") : "-"}</td>
-                            <td>${d.hobbies && d.hobbies.length ? d.hobbies.join(", ") : "-"}</td>
-                            <td>
-                                <button class="btn btn-danger btn-sm" onclick="deleteDev(${d.id})">🗑 Delete</button>
-                            </td>
-                         </tr>`;
-            });
-            document.getElementById("devTable").innerHTML = rows;
+            try {
+                const response = await fetch('/api/Developers'); // Update with your actual API endpoint
+                const data = await response.json();
+                developersData = data;
+                renderDevelopers(data);
+            } catch (error) {
+                console.error('Error loading developers:', error);
+                tableBody.innerHTML = `
+                    <tr>
+                        <td colspan="6" class="empty-state">
+                            <i class="fas fa-exclamation-circle"></i>
+                            <p>Failed to load developers. Please try again later.</p>
+                        </td>
+                    </tr>
+                `;
+            }
         }
 
-        async function deleteDev(id) {
-            if (!confirm("Delete this developer?")) return;
-            await fetch(`/api/developer/${id}`, { method: "DELETE" });
-            loadDevelopers();
+        // Render developers in table
+        function renderDevelopers(developers) {
+            if (developers.length === 0) {
+                tableBody.innerHTML = `
+                    <tr>
+                        <td colspan="6" class="empty-state">
+                            <i class="fas fa-users-slash"></i>
+                            <p>No developers found. Add your first developer!</p>
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+
+            tableBody.innerHTML = developers.map(dev => `
+                <tr data-id="${dev.id}">
+                    <td><strong>${dev.username}</strong></td>
+                    <td>${dev.email}</td>
+                    <td>${dev.phoneNumber}</td>
+                    <td>
+                        ${dev.skillsets.map(skill => `<span class="badge-skill">${skill}</span>`).join('')}
+                    </td>
+                    <td>
+                        ${dev.hobbies.map(hobby => `<span class="badge-hobby">${hobby}</span>`).join('')}
+                    </td>
+                    <td>
+                        <div class="action-buttons">
+                            <button class="btn-action btn-edit" data-id="${dev.id}" title="Edit">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button class="btn-action btn-delete" data-id="${dev.id}" title="Delete">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            `).join('');
         }
 
+        // Search functionality
+        searchInput.addEventListener('keyup', function() {
+            const searchTerm = this.value.toLowerCase();
+            const filtered = developersData.filter(dev =>
+                dev.username.toLowerCase().includes(searchTerm) ||
+                dev.email.toLowerCase().includes(searchTerm)
+            );
+            renderDevelopers(filtered);
+        });
+
+        // Edit developer
+        function editDeveloper(id) {
+            window.location.href = `/Update/${id}`;
+        }
+
+        // Delete developer
+        async function deleteDeveloper(id) {
+            if (confirm('Are you sure you want to delete this developer?')) {
+                try {
+                    const response = await fetch(`/api/Developers/${id}`, {
+                        method: 'DELETE'
+                    });
+
+                    if (response.ok) {
+                        alert('Developer deleted successfully!');
+                        loadDevelopers(); // Reload the list
+                    } else {
+                        alert('Failed to delete developer.');
+                    }
+                } catch (error) {
+                    console.error('Error deleting developer:', error);
+                    alert('Error deleting developer.');
+                }
+            }
+        }
+
+        // Event delegation for dynamically created buttons
+        tableBody.addEventListener('click', function(e) {
+            const editBtn = e.target.closest('.btn-edit');
+            const deleteBtn = e.target.closest('.btn-delete');
+
+            if (editBtn) {
+                const id = editBtn.getAttribute('data-id');
+                editDeveloper(id);
+            } else if (deleteBtn) {
+                const id = deleteBtn.getAttribute('data-id');
+                deleteDeveloper(id);
+            }
+        });
+
+        // Load developers on page load
         loadDevelopers();
     </script>
-}
+</body>
+</html>

@@ -13,9 +13,10 @@ namespace CompleteDeveloperNetwork_System.Controllers
     {
         private readonly DataContext _context;
         private readonly IMediator _mediator;
-        public DevelopersController(DataContext context)
+        public DevelopersController(DataContext context, IMediator mediator)
         {
             _context = context;
+            _mediator = mediator;
         }
 
         // ✅ GET all developers
@@ -30,6 +31,7 @@ namespace CompleteDeveloperNetwork_System.Controllers
                     Id = d.Id,
                     Username = d.Username,
                     Email = d.Email,
+                    PhoneNumber = d.PhoneNumber,
                     Skillsets = d.skillsets.Select(s => s.Name).ToList(),
                     Hobbies = d.hobbies.Select(h => h.Name).ToList()
                 })
@@ -102,7 +104,7 @@ namespace CompleteDeveloperNetwork_System.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult<DeveloperDto>> UpdateDeveloper(int id, UpdateDeveloperDto dto)
+        public async Task<ActionResult<DeveloperDto>> UpdateDeveloper(int id, [FromBody] UpdateDeveloperDto dto)
         {
             var developer = await _context.developers
                 .Include(d => d.skillsets)
@@ -112,13 +114,12 @@ namespace CompleteDeveloperNetwork_System.Controllers
             if (developer == null)
                 return NotFound();
 
-            // Update basic fields
             developer.Username = dto.Username;
             developer.Email = dto.Email;
             developer.PhoneNumber = dto.PhoneNumber;
+            developer.IsActive = dto.IsActive;
             developer.Udatetime = DateTime.Now;
 
-            // Clear and re-add skillsets
             developer.skillsets.Clear();
             developer.skillsets = dto.Skillsets?.Select(s => new Skillsets
             {
@@ -127,7 +128,6 @@ namespace CompleteDeveloperNetwork_System.Controllers
                 DeveloperId = id
             }).ToList();
 
-            // Clear and re-add hobbies
             developer.hobbies.Clear();
             developer.hobbies = dto.Hobbies?.Select(h => new Hobbies
             {
@@ -138,19 +138,19 @@ namespace CompleteDeveloperNetwork_System.Controllers
 
             await _context.SaveChangesAsync();
 
-            // Return updated DTO
-            var devDto = new DeveloperDto
+            return Ok(new DeveloperDto
             {
                 Id = developer.Id,
                 Username = developer.Username,
                 Email = developer.Email,
-                PhoneNumber = developer.PhoneNumber.ToString(),
+                PhoneNumber = developer.PhoneNumber,
                 Skillsets = developer.skillsets.Select(s => s.Name).ToList(),
-                Udatetime = developer.Udatetime
-            };
-
-            return Ok(devDto);
+                Hobbies = developer.hobbies.Select(h => h.Name).ToList(),
+                Udatetime = developer.Udatetime,
+                IsActive = developer.IsActive
+            });
         }
+
 
         [HttpPatch("{id}")]
         public async Task<ActionResult<DeveloperDto>> PatchDeveloper(int id, PatchDeveloperDto dto)

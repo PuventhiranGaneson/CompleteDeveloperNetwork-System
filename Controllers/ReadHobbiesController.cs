@@ -1,6 +1,7 @@
 ﻿using CompleteDeveloperNetwork_System.Data;
 using CompleteDeveloperNetwork_System.Dto;
 using CompleteDeveloperNetwork_System.Models;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -11,11 +12,13 @@ namespace CompleteDeveloperNetwork_System.Controllers
         public class ReadHobbiesController : ControllerBase
         {
             private readonly DataContext _context;
+        private readonly IMediator _mediator;
 
-            public ReadHobbiesController(DataContext context)
+        public ReadHobbiesController(DataContext context, IMediator mediator)
             {
                 _context = context;
-            }
+                _mediator = mediator;
+        }
 
             //GET all skillsets
             [HttpGet]

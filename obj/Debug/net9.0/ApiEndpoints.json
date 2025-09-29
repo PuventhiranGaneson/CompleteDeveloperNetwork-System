@@ -86,7 +86,7 @@
       },
       {
         "Name": "dto",
-        "Type": "CompleteDeveloperNetwork_System.Dto.UpdateDeveloperDto",
+        "Type": "UpdateDeveloperDto",
         "IsRequired": true
       }
     ],
@@ -190,7 +190,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[CompleteDeveloperNetwork_System.Dto.HobbiesDto, CompleteDeveloperNetwork-System, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[HobbiesDto, CompleteDeveloperNetwork-System, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -216,7 +216,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[CompleteDeveloperNetwork_System.Dto.HobbiesDto, CompleteDeveloperNetwork-System, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[HobbiesDto, CompleteDeveloperNetwork-System, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -236,7 +236,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[CompleteDeveloperNetwork_System.Dto.SkillsetsDto, CompleteDeveloperNetwork-System, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SkillsetsDto, CompleteDeveloperNetwork-System, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -262,7 +262,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[CompleteDeveloperNetwork_System.Dto.SkillsetsDto, CompleteDeveloperNetwork-System, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SkillsetsDto, CompleteDeveloperNetwork-System, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",

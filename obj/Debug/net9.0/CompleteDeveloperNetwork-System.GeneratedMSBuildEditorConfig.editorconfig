@@ -32,12 +32,12 @@ build_property.EnableCodeStyleSeverity =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Puven/source/repos/CompleteDeveloperNetwork-System/CompleteDeveloperNetwork-System/Pages/Hello.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSGVsbG8uY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/Puven/source/repos/CompleteDeveloperNetwork-System/CompleteDeveloperNetwork-System/Pages/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Puven/source/repos/CompleteDeveloperNetwork-System/CompleteDeveloperNetwork-System/Pages/Update.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXBkYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Puven/source/repos/CompleteDeveloperNetwork-System/CompleteDeveloperNetwork-System/Pages/_Layout.cshtml/_Layout.cshtml]

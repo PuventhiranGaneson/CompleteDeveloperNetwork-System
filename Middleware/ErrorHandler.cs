@@ -1,7 +1,11 @@
-﻿public class ErrorHandlerMiddleware
+﻿public class ErrorHandler
 {
     private readonly RequestDelegate _next;
-    public ErrorHandlerMiddleware(RequestDelegate next) => _next = next;
+
+    public ErrorHandler(RequestDelegate next)
+    {
+        _next = next ?? throw new ArgumentNullException(nameof(next));
+    }
 
     public async Task Invoke(HttpContext context)
     {

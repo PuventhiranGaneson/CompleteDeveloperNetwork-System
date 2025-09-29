@@ -1,114 +1,423 @@
 ﻿@page
-@model CompleteDeveloperNetwork_System.Pages.HelloModel
+@model CompleteDeveloperNetwork_System.Pages.IndexModel
 @{
-    ViewData["Title"] = "Create Developer";
+    ViewData["Title"] = " Add Developers";
 }
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
 
-<style>
-    body {
-        background: linear-gradient(135deg, #74ebd5 0%, #ACB6E5 100%);
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        padding-top: 50px;
-    }
-
-    .form-card {
-        max-width: 600px;
-        margin: auto;
-        background: #fff;
-        padding: 30px;
-        border-radius: 12px;
-        box-shadow: 0px 4px 15px rgba(0,0,0,0.2);
-        animation: fadeIn 0.6s ease-in-out;
-    }
-
-    .form-title {
-        text-align: center;
-        margin-bottom: 25px;
-        color: #2c3e50;
-        font-weight: bold;
-    }
-
-    .btn-custom {
-        background: #2c3e50;
-        color: white;
-        font-weight: 500;
-        transition: all 0.3s ease;
-    }
-
-        .btn-custom:hover {
-            background: #1a242f;
-            transform: scale(1.05);
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Developer</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-    @keyframes fadeIn {
-        flow
-    {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
+        .form-card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 40px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
 
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+        .form-title {
+            color: #2d3748;
+            font-weight: 700;
+            margin-bottom: 10px;
+            font-size: 2rem;
+            text-align: center;
+        }
 
-    }
-</style>
+        .form-subtitle {
+            text-align: center;
+            color: #718096;
+            margin-bottom: 30px;
+            font-size: 0.95rem;
+        }
 
-<div class="form-card">
-    <h2 class="form-title">Create Developer</h2>
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
 
-    <form method="post" onsubmit="return createDev(event)">
-        <div class="mb-3">
-            <label class="form-label">Username</label>
-            <input class="form-control" id="username" required />
+            .back-link:hover {
+                color: #764ba2;
+                transform: translateX(-5px);
+            }
+
+        .form-label {
+            color: #2d3748;
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+            .form-label i {
+                color: #667eea;
+                font-size: 0.9rem;
+            }
+
+        .form-control {
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 12px 15px;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+            .form-control:focus {
+                border-color: #667eea;
+                box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+                outline: none;
+            }
+
+        .input-group {
+            position: relative;
+        }
+
+        .input-icon {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #a0aec0;
+            pointer-events: none;
+        }
+
+        .text-muted {
+            color: #a0aec0 !important;
+            font-size: 0.85rem;
+        }
+
+        .hint-text {
+            color: #718096;
+            font-size: 0.85rem;
+            margin-top: 5px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+            .hint-text i {
+                color: #667eea;
+            }
+
+        .btn-custom {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            padding: 14px 30px;
+            border-radius: 10px;
+            color: white;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+            .btn-custom:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+                color: white;
+            }
+
+            .btn-custom:disabled {
+                opacity: 0.6;
+                cursor: not-allowed;
+                transform: none;
+            }
+
+        .btn-secondary-custom {
+            background: #e2e8f0;
+            color: #4a5568;
+            border: none;
+            padding: 14px 30px;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+            .btn-secondary-custom:hover {
+                background: #cbd5e0;
+                color: #2d3748;
+            }
+
+        .button-group {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+            .button-group button {
+                flex: 1;
+            }
+
+        .form-section {
+            background: #f7fafc;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            border-left: 4px solid #667eea;
+        }
+
+        .form-section-title {
+            color: #2d3748;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .loading-spinner {
+            display: none;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        
+
+        .alert-custom {
+            border-radius: 10px;
+            border: none;
+            padding: 15px 20px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .alert-success-custom {
+            background: #c6f6d5;
+            color: #22543d;
+        }
+
+        .alert-error-custom {
+            background: #fed7d7;
+            color: #742a2a;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form-card">
+            <a href="/" class="back-link">
+                <i class="fas fa-arrow-left"></i>
+                Back to Directory
+            </a>
+
+            <h2 class="form-title">
+                <i class="fas fa-user-plus"></i> Create New Developer
+            </h2>
+            <p class="form-subtitle">Add a new freelancer to the Complete Developer Network</p>
+
+            <div id="alertBox" class="alert-custom"></div>
+
+            <form id="developerForm" onsubmit="return createDev(event)">
+                <!-- Personal Information Section -->
+                <div class="form-section">
+                    <div class="form-section-title">
+                        <i class="fas fa-user-circle"></i>
+                        Personal Information
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">
+                            <i class="fas fa-user"></i>
+                            Username
+                        </label>
+                        <input type="text" class="form-control" id="username" required placeholder="Enter username" />
+                        <div class="hint-text">
+                            <i class="fas fa-info-circle"></i>
+                            Choose a unique username for the developer
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">
+                            <i class="fas fa-envelope"></i>
+                            Email Address
+                        </label>
+                        <input type="email" class="form-control" id="email" required placeholder="developer@example.com" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">
+                            <i class="fas fa-phone"></i>
+                            Phone Number
+                        </label>
+                        <input type="tel" class="form-control" id="phoneNumber" required placeholder="+1 234-567-8900" />
+                    </div>
+                </div>
+
+                <!-- Skills & Interests Section -->
+                <div class="form-section">
+                    <div class="form-section-title">
+                        <i class="fas fa-code"></i>
+                        Skills & Interests
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">
+                            <i class="fas fa-laptop-code"></i>
+                            Skillsets
+                            <small class="text-muted">(comma separated)</small>
+                        </label>
+                        <input type="text" class="form-control" id="skillsets" placeholder="C#, .NET, SQL, JavaScript, React" />
+                        <div class="hint-text">
+                            <i class="fas fa-info-circle"></i>
+                            Enter technical skills separated by commas
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">
+                            <i class="fas fa-heart"></i>
+                            Hobbies
+                            <small class="text-muted">(comma separated)</small>
+                        </label>
+                        <input type="text" class="form-control" id="hobbies" placeholder="Gaming, Reading, Photography, Traveling" />
+                        <div class="hint-text">
+                            <i class="fas fa-info-circle"></i>
+                            Share personal interests and hobbies
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="button-group">
+                    <button type="button" class="btn btn-secondary-custom" onclick="window.location.href='/'">
+                        <i class="fas fa-times"></i>
+                        Cancel
+                    </button>
+                    <button type="submit" class="btn btn-custom" id="submitBtn">
+                        <span id="btnText">
+                            <i class="fas fa-save"></i>
+                            Save Developer
+                        </span>
+                        <div class="loading-spinner" id="loadingSpinner"></div>
+                    </button>
+                </div>
+            </form>
         </div>
+    </div>
 
-        <div class="mb-3">
-            <label class="form-label">Email</label>
-            <input type="email" class="form-control" id="email" required />
-        </div>
-
-        <div class="mb-3">
-            <label class="form-label">Phone</label>
-            <input class="form-control" id="phone" required />
-        </div>
-
-        <div class="mb-3">
-            <label class="form-label">Skillsets <small class="text-muted">(comma separated)</small></label>
-            <input class="form-control" id="skillsets" placeholder="C#, SQL, React" />
-        </div>
-
-        <div class="mb-3">
-            <label class="form-label">Hobbies <small class="text-muted">(comma separated)</small></label>
-            <input class="form-control" id="hobbies" placeholder="Cycling, Gaming" />
-        </div>
-
-        <div class="d-grid">
-            <button type="submit" class="btn btn-custom btn-lg">Save Developer</button>
-        </div>
-    </form>
-</div>
-
-@section Scripts {
     <script>
+        const alertBox = document.getElementById('alertBox');
+        const submitBtn = document.getElementById('submitBtn');
+        const btnText = document.getElementById('btnText');
+        const loadingSpinner = document.getElementById('loadingSpinner');
+
+        function showAlert(message, type) {
+            alertBox.className = `alert-custom alert-${type}-custom`;
+            alertBox.innerHTML = `
+                <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'}"></i>
+                ${message}
+            `;
+            alertBox.style.display = 'block';
+
+            if (type === 'success') {
+                setTimeout(() => {
+                    alertBox.style.display = 'none';
+                }, 3000);
+            }
+        }
+
         async function createDev(e) {
             e.preventDefault();
-            const dev = {
-                username: document.getElementById("username").value,
-                email: document.getElementById("email").value,
-                phoneNumber: document.getElementById("phone").value,
-                skillsets: document.getElementById("skillsets").value.split(",").map(s => ({ name: s.trim(), description: "" })),
-                hobbies: document.getElementById("hobbies").value.split(",").map(h => ({ name: h.trim(), description: "" }))
-            };
-            await fetch('/api/developer', {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(dev)
-            });
-            location.href = "/Developers";
+
+            // Disable button and show loading
+            submitBtn.disabled = true;
+            btnText.style.display = 'none';
+            loadingSpinner.style.display = 'block';
+
+            try {
+                const dev = {
+                    username: document.getElementById("username").value.trim(),
+                    email: document.getElementById("email").value.trim(),
+                    phoneNumber: document.getElementById("phoneNumber").value.trim(),
+                    skillsets: document.getElementById("skillsets").value
+                        .split(",")
+                        .filter(s => s.trim() !== "")
+                        .map(s => ({ name: s.trim(), description: "" })),
+                    hobbies: document.getElementById("hobbies").value
+                        .split(",")
+                        .filter(h => h.trim() !== "")
+                        .map(h => ({ name: h.trim(), description: "" }))
+                };
+
+                const response = await fetch('/api/Developers', {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(dev)
+                });
+
+                if (response.ok) {
+                    showAlert('Developer created successfully! Redirecting...', 'success');
+                    setTimeout(() => {
+                        window.location.href = "/";
+                    }, 1500);
+                } else {
+                    const error = await response.text();
+                    showAlert(`Failed to create developer: ${error}`, 'error');
+                    submitBtn.disabled = false;
+                    btnText.style.display = 'flex';
+                    loadingSpinner.style.display = 'none';
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                showAlert('An error occurred while creating the developer. Please try again.', 'error');
+                submitBtn.disabled = false;
+                btnText.style.display = 'flex';
+                loadingSpinner.style.display = 'none';
+            }
+
+            return false;
         }
+
+        // Input validation feedback
+        const inputs = document.querySelectorAll('.form-control');
+        inputs.forEach(input => {
+            input.addEventListener('blur', function() {
+                if (this.value.trim() !== '' || this.hasAttribute('required')) {
+                    if (this.checkValidity()) {
+                        this.style.borderColor = '#48bb78';
+                    } else {
+                        this.style.borderColor = '#f56565';
+                    }
+                }
+            });
+
+            input.addEventListener('focus', function() {
+                this.style.borderColor = '#667eea';
+            });
+        });
     </script>
-}
+</body>
+</html>
