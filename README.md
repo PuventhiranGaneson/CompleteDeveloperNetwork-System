@@ -59,9 +59,11 @@ erDiagram
     Testing: xUnit / NUnit (5 unit test projects included)
 
 📦 Getting Started
-
+    GitFront Deploy Key:
+    ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICG7OUbNip9xAwHgPNc1shedxaL4BtE5wsTA5gaK+uUV puven@gitfront.io
+    
     Clone the repository:
-
+    
     git clone https://github.com/your-repo/complete-developer-network.git
 
     Update the connection string in appsettings.json to point to your SQL Server.
@@ -76,6 +78,8 @@ Launch the app:
 
   Open in browser: http://localhost:5102
 
+GitFront Deploy Key
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICG7OUbNip9xAwHgPNc1shedxaL4BtE5wsTA5gaK+uUV puven@gitfront.io
 
 
 ---
