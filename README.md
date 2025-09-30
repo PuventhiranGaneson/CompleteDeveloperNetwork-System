@@ -60,8 +60,39 @@ erDiagram
 
 📦 Getting Started
 
-    GitFront Deploy Key:
-    ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICG7OUbNip9xAwHgPNc1shedxaL4BtE5wsTA5gaK+uUV puven@gitfront.io
+### A. Add the key to GitHub (per-repo)
+1. Open the repository on **GitHub**.  
+2. Go to **Settings** → **Deploy keys**.  
+3. Click **Add deploy key**.  
+4. **Title:** `GitFront Deploy Key`  
+5. **Key:** paste the deploy key (the entire `ssh-ed25519 ... puven@gitfront.io` line).  
+6. **Leave** "Allow write access" **unchecked** (read-only).  
+7. Click **Add key**.
+
+### B. Add the key to GitLab (per-repo)
+1. Open the repository on **GitLab**.  
+2. Go to **Settings** → **Repository** → **Deploy Keys**.  
+3. Click **New deploy key**.  
+4. **Title:** `GitFront Deploy Key`  
+5. **Key:** paste the deploy key.  
+6. Make sure **Grant write permissions** is **not** selected.  
+7. Click **Add key**.
+
+### C. Add the key to Bitbucket (per-repo)
+1. Open the repo on **Bitbucket**.  
+2. Go to **Repository settings** → **Access keys** (or **SSH keys**).  
+3. Click **Add key**.  
+4. **Label:** `GitFront Deploy Key`  
+5. **Key:** paste the deploy key.  
+6. Save.
+
+### D. Finish the import on GitFront
+1. Go to **GitFront** and import the repo (or retry import).  
+2. GitFront will use the deploy key to read your private repo.  
+3. When import finishes, GitFront will provide a **clone URL** like:
+
+GitFront Deploy Key:
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICG7OUbNip9xAwHgPNc1shedxaL4BtE5wsTA5gaK+uUV puven@gitfront.io
     
     Clone the repository:
     
@@ -78,10 +109,5 @@ Launch the app:
    dotnet run
 
   Open in browser: http://localhost:5102
-
-GitFront Deploy Key
-ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICG7OUbNip9xAwHgPNc1shedxaL4BtE5wsTA5gaK+uUV puven@gitfront.io
-
-
 ---
 
