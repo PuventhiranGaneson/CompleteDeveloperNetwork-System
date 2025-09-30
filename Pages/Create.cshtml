@@ -272,7 +272,7 @@
                             <i class="fas fa-phone"></i>
                             Phone Number
                         </label>
-                        <input type="tel" class="form-control" id="phoneNumber" required placeholder="+1 234-567-8900" />
+                        <input type="number" class="form-control" id="phoneNumber" required placeholder="+1 234-567-8900" min="0" oninput="this.value = this.value.replace(/[^0-9]/g, '');" />
                     </div>
                 </div>
 
@@ -289,7 +289,7 @@
                             Skillsets
                             <small class="text-muted">(comma separated)</small>
                         </label>
-                        <input type="text" class="form-control" id="skillsets" placeholder="C#, .NET, SQL, JavaScript, React" />
+                        <input type="text" class="form-control" id="skillsets" required placeholder="C#, .NET, SQL, JavaScript, React" />
                         <div class="hint-text">
                             <i class="fas fa-info-circle"></i>
                             Enter technical skills separated by commas
@@ -302,7 +302,7 @@
                             Hobbies
                             <small class="text-muted">(comma separated)</small>
                         </label>
-                        <input type="text" class="form-control" id="hobbies" placeholder="Gaming, Reading, Photography, Traveling" />
+                        <input type="text" class="form-control" id="hobbies" required placeholder="Gaming, Reading, Photography, Traveling" />
                         <div class="hint-text">
                             <i class="fas fa-info-circle"></i>
                             Share personal interests and hobbies
@@ -362,7 +362,7 @@
                     username: document.getElementById("username").value.trim(),
                     email: document.getElementById("email").value.trim(),
                     phoneNumber: document.getElementById("phoneNumber").value.trim(),
-                    skillsets: document.getElementById("skillsets").value
+                    hobbiesInput.value
                         .split(",")
                         .filter(s => s.trim() !== "")
                         .map(s => ({ name: s.trim(), description: "" })),
