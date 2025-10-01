@@ -362,7 +362,7 @@
                     username: document.getElementById("username").value.trim(),
                     email: document.getElementById("email").value.trim(),
                     phoneNumber: document.getElementById("phoneNumber").value.trim(),
-                    hobbiesInput.value
+                    skillsets: document.getElementById("skillsets").value
                         .split(",")
                         .filter(s => s.trim() !== "")
                         .map(s => ({ name: s.trim(), description: "" })),
