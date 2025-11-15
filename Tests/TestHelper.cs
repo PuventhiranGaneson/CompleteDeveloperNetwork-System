@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using CompleteDeveloperNetwork_System.Data;
+using CompleteDeveloperNetwork_System.Infrastructure.Data;
 
 public static class TestHelper
 {

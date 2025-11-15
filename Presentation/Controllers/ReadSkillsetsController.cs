@@ -1,10 +1,10 @@
-﻿using CompleteDeveloperNetwork_System.Data;
-using CompleteDeveloperNetwork_System.Dto;
-using CompleteDeveloperNetwork_System.Models;
+﻿using CompleteDeveloperNetwork_System.Application.Dto;
+using CompleteDeveloperNetwork_System.Domain;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using CompleteDeveloperNetwork_System.Infrastructure.Data;
 
-namespace CompleteDeveloperNetwork_System.Controllers
+namespace CompleteDeveloperNetwork_System.Presentation.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]

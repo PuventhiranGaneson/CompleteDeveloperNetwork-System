@@ -1,16 +1,18 @@
-﻿namespace CompleteDeveloperNetwork_System.Dto
+﻿using Microsoft.AspNetCore.Mvc.ViewEngines;
+
+namespace CompleteDeveloperNetwork_System.Domain.Entities
 {
-    public class DeveloperDto
+    public class Developers
     {
         public int Id { get; set; }
         public string Username { get; set; }
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
-
         public DateTime Udatetime { get; set; }
         public int IsActive { get; set; }
 
-        public List<string> Skillsets { get; set; }
-        public List<string> Hobbies { get; set; }
+        //many
+        public ICollection<Skillsets> skillsets { get; set; }
+        public ICollection<Hobbies> hobbies { get; set; }
     }
 }

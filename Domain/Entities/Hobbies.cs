@@ -1,4 +1,4 @@
-﻿namespace CompleteDeveloperNetwork_System.Models
+﻿namespace CompleteDeveloperNetwork_System.Domain.Entities
 {
     public class Hobbies
     {

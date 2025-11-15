@@ -28,18 +28,18 @@ build_property._RazorSourceGeneratorDebug =
 build_property.EffectiveAnalysisLevelStyle = 9.0
 build_property.EnableCodeStyleSeverity = 
 
-[C:/Users/Puven/source/repos/CompleteDeveloperNetwork-System/CompleteDeveloperNetwork-System/Pages/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ3JlYXRlLmNzaHRtbA==
+[C:/Users/Puven/source/repos/CompleteDeveloperNetwork-System/CompleteDeveloperNetwork-System/Presentation/Pages/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UHJlc2VudGF0aW9uXFBhZ2VzXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Puven/source/repos/CompleteDeveloperNetwork-System/CompleteDeveloperNetwork-System/Pages/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXguY3NodG1s
+[C:/Users/Puven/source/repos/CompleteDeveloperNetwork-System/CompleteDeveloperNetwork-System/Presentation/Pages/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UHJlc2VudGF0aW9uXFBhZ2VzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Puven/source/repos/CompleteDeveloperNetwork-System/CompleteDeveloperNetwork-System/Pages/Update.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXBkYXRlLmNzaHRtbA==
+[C:/Users/Puven/source/repos/CompleteDeveloperNetwork-System/CompleteDeveloperNetwork-System/Presentation/Pages/Update.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UHJlc2VudGF0aW9uXFBhZ2VzXFVwZGF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Puven/source/repos/CompleteDeveloperNetwork-System/CompleteDeveloperNetwork-System/Pages/_Layout.cshtml/_Layout.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0xheW91dC5jc2h0bWxcX0xheW91dC5jc2h0bWw=
+[C:/Users/Puven/source/repos/CompleteDeveloperNetwork-System/CompleteDeveloperNetwork-System/Presentation/Pages/_Layout.cshtml/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UHJlc2VudGF0aW9uXFBhZ2VzXF9MYXlvdXQuY3NodG1sXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 

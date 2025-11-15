@@ -37,6 +37,7 @@
     ".NETCoreApp,Version=v9.0": {
       "CompleteDeveloperNetwork-System/1.0.0": {
         "dependencies": {
+          "Dapper": "2.1.35",
           "FluentValidation.AspNetCore": "11.3.1",
           "MediatR": "13.0.0",
           "MediatR.Extensions.Microsoft.DependencyInjection": "11.1.0",
@@ -404,6 +405,17 @@
         },
         "compile": {
           "lib/net6.0/Castle.Core.dll": {}
+        }
+      },
+      "Dapper/2.1.35": {
+        "runtime": {
+          "lib/net7.0/Dapper.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.1.35.13827"
+          }
+        },
+        "compile": {
+          "lib/net7.0/Dapper.dll": {}
         }
       },
       "FluentValidation/11.11.0": {
@@ -3529,6 +3541,13 @@
       "sha512": "sha512-rpYtIczkzGpf+EkZgDr9CClTdemhsrwA/W5hMoPjLkRFnXzH44zDLoovXeKtmxb1ykXK9aJVODSpiJml8CTw2g==",
       "path": "castle.core/5.1.1",
       "hashPath": "castle.core.5.1.1.nupkg.sha512"
+    },
+    "Dapper/2.1.35": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-YKRwjVfrG7GYOovlGyQoMvr1/IJdn+7QzNXJxyMh0YfFF5yvDmTYaJOVYWsckreNjGsGSEtrMTpnzxTUq/tZQw==",
+      "path": "dapper/2.1.35",
+      "hashPath": "dapper.2.1.35.nupkg.sha512"
     },
     "FluentValidation/11.11.0": {
       "type": "package",

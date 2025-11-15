@@ -8,13 +8,14 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<Compile Remove="Pages\NewFolder1\**" />
-		<Content Remove="Pages\NewFolder1\**" />
-		<EmbeddedResource Remove="Pages\NewFolder1\**" />
-		<None Remove="Pages\NewFolder1\**" />
+		<Compile Remove="Presentation\Pages\NewFolder1\**" />
+		<Content Remove="Presentation\Pages\NewFolder1\**" />
+		<EmbeddedResource Remove="Presentation\Pages\NewFolder1\**" />
+		<None Remove="Presentation\Pages\NewFolder1\**" />
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="Dapper" Version="2.1.35" />
 		<PackageReference Include="FluentValidation.AspNetCore" Version="11.3.1" />
 		<PackageReference Include="MediatR" Version="13.0.0" />
 		<PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.1.0" />
@@ -35,14 +36,13 @@
 		<PackageReference Include="Swashbuckle.AspNetCore" Version="9.0.4" />
 		<PackageReference Include="xunit" Version="2.9.3" />
 		<PackageReference Include="xunit.runner.visualstudio" Version="3.1.4">
-
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 	</ItemGroup>
 
 	<ItemGroup>
-		<Folder Include="Pages\Developers\" />
+		<Folder Include="Presentation\Pages\Developers\" />
 	</ItemGroup>
 
 </Project>

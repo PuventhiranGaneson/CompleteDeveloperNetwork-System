@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "4vsd/4gU6SA=",
+  "dgSpecHash": "4IcLfJtTJP0=",
   "success": true,
   "projectFilePath": "C:\\Users\\Puven\\source\\repos\\CompleteDeveloperNetwork-System\\CompleteDeveloperNetwork-System\\CompleteDeveloperNetwork-System.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Puven\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\Puven\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",
     "C:\\Users\\Puven\\.nuget\\packages\\castle.core\\5.1.1\\castle.core.5.1.1.nupkg.sha512",
+    "C:\\Users\\Puven\\.nuget\\packages\\dapper\\2.1.35\\dapper.2.1.35.nupkg.sha512",
     "C:\\Users\\Puven\\.nuget\\packages\\fluentvalidation\\11.11.0\\fluentvalidation.11.11.0.nupkg.sha512",
     "C:\\Users\\Puven\\.nuget\\packages\\fluentvalidation.aspnetcore\\11.3.1\\fluentvalidation.aspnetcore.11.3.1.nupkg.sha512",
     "C:\\Users\\Puven\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\11.11.0\\fluentvalidation.dependencyinjectionextensions.11.11.0.nupkg.sha512",

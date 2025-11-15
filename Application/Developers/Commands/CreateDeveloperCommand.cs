@@ -1,10 +1,10 @@
-﻿using MediatR;
-using CompleteDeveloperNetwork_System.Dto;
+﻿using CompleteDeveloperNetwork_System.Application.Dto;
+using MediatR;
 using System.Collections.Generic;
 
-namespace CompleteDeveloperNetwork_System.CQRS.Commands
+namespace CompleteDeveloperNetwork_System.Application.Developers.Commands
 {
-    // Command: request to create a new developer
+    // Command: carries the data from the request into the Handler
     public record CreateDeveloperCommand(
         string Username,
         string Email,
@@ -12,17 +12,4 @@ namespace CompleteDeveloperNetwork_System.CQRS.Commands
         List<SkillsetDto> Skillsets,
         List<HobbyDto> Hobbies
     ) : IRequest<DeveloperDto>;
-
-    // Helper DTOs for skillsets and hobbies input
-    public class SkillsetDto
-    {
-        public string Name { get; set; }
-        public string Description { get; set; }
-    }
-
-    public class HobbyDto
-    {
-        public string Name { get; set; }
-        public string Description { get; set; }
-    }
 }

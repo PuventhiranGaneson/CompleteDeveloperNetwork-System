@@ -479,3 +479,4 @@ C:\Users\Puven\source\repos\CompleteDeveloperNetwork-System\CompleteDeveloperNet
 C:\Users\Puven\source\repos\CompleteDeveloperNetwork-System\CompleteDeveloperNetwork-System\bin\Debug\net9.0\FluentValidation.dll
 C:\Users\Puven\source\repos\CompleteDeveloperNetwork-System\CompleteDeveloperNetwork-System\bin\Debug\net9.0\FluentValidation.AspNetCore.dll
 C:\Users\Puven\source\repos\CompleteDeveloperNetwork-System\CompleteDeveloperNetwork-System\bin\Debug\net9.0\FluentValidation.DependencyInjectionExtensions.dll
+C:\Users\Puven\source\repos\CompleteDeveloperNetwork-System\CompleteDeveloperNetwork-System\bin\Debug\net9.0\Dapper.dll

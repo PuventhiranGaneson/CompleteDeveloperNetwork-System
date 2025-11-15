@@ -1,4 +1,4 @@
-﻿namespace CompleteDeveloperNetwork_System.Dto
+﻿namespace CompleteDeveloperNetwork_System.Application.Dto
 {
     public class SkillsetsDto
     {

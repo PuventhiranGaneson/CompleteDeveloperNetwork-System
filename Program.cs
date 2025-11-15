@@ -1,13 +1,12 @@
-using CompleteDeveloperNetwork_System.Data;
-using Microsoft.EntityFrameworkCore;
+using CompleteDeveloperNetwork_System.Infrastructure;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddDbContext<DataContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
-           .LogTo(Console.WriteLine, LogLevel.Information));
+builder.Services.AddSingleton<IDbConnectionFactory>(sp =>
+    new DbConnectionFactory(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
@@ -20,7 +19,7 @@ builder.Services.AddOpenApi();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Program).Assembly));
-builder.Services.AddRazorPages();
+builder.Services.AddRazorPages().WithRazorPagesRoot("/Presentation/Pages");
 
 builder.Services.AddCors(options =>
 {
@@ -29,6 +28,12 @@ builder.Services.AddCors(options =>
 });
 
 var app = builder.Build();
+
+if (!app.Environment.IsDevelopment())
+{
+    app.UseExceptionHandler("/Error");
+    app.UseHsts();
+}
 
 app.UseCors("AllowAll");
 // Configure the HTTP request pipeline.

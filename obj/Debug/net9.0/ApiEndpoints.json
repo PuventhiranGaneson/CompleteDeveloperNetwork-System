@@ -1,6 +1,6 @@
 [
   {
-    "ContainingType": "CompleteDeveloperNetwork_System.Controllers.DevelopersController",
+    "ContainingType": "CompleteDeveloperNetwork_System.Presentation.Controllers.DevelopersController",
     "Method": "GetDeveloper",
     "RelativePath": "api/Developers",
     "HttpMethod": "GET",
@@ -9,7 +9,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[CompleteDeveloperNetwork_System.Dto.DeveloperDto, CompleteDeveloperNetwork-System, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CompleteDeveloperNetwork_System.Application.Dto.DeveloperDto, CompleteDeveloperNetwork-System, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -20,7 +20,7 @@
     ]
   },
   {
-    "ContainingType": "CompleteDeveloperNetwork_System.Controllers.DevelopersController",
+    "ContainingType": "CompleteDeveloperNetwork_System.Presentation.Controllers.DevelopersController",
     "Method": "CreateDeveloper",
     "RelativePath": "api/Developers",
     "HttpMethod": "POST",
@@ -35,7 +35,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "CompleteDeveloperNetwork_System.Dto.DeveloperDto",
+        "Type": "CompleteDeveloperNetwork_System.Application.Dto.DeveloperDto",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -46,7 +46,7 @@
     ]
   },
   {
-    "ContainingType": "CompleteDeveloperNetwork_System.Controllers.DevelopersController",
+    "ContainingType": "CompleteDeveloperNetwork_System.Presentation.Controllers.DevelopersController",
     "Method": "GetDeveloperById",
     "RelativePath": "api/Developers/{id}",
     "HttpMethod": "GET",
@@ -61,7 +61,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "CompleteDeveloperNetwork_System.Dto.DeveloperDto",
+        "Type": "CompleteDeveloperNetwork_System.Application.Dto.DeveloperDto",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -72,7 +72,7 @@
     ]
   },
   {
-    "ContainingType": "CompleteDeveloperNetwork_System.Controllers.DevelopersController",
+    "ContainingType": "CompleteDeveloperNetwork_System.Presentation.Controllers.DevelopersController",
     "Method": "UpdateDeveloper",
     "RelativePath": "api/Developers/{id}",
     "HttpMethod": "PUT",
@@ -92,7 +92,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "CompleteDeveloperNetwork_System.Dto.DeveloperDto",
+        "Type": "CompleteDeveloperNetwork_System.Application.Dto.DeveloperDto",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -103,7 +103,7 @@
     ]
   },
   {
-    "ContainingType": "CompleteDeveloperNetwork_System.Controllers.DevelopersController",
+    "ContainingType": "CompleteDeveloperNetwork_System.Presentation.Controllers.DevelopersController",
     "Method": "PatchDeveloper",
     "RelativePath": "api/Developers/{id}",
     "HttpMethod": "PATCH",
@@ -117,13 +117,13 @@
       },
       {
         "Name": "dto",
-        "Type": "CompleteDeveloperNetwork_System.Dto.PatchDeveloperDto",
+        "Type": "CompleteDeveloperNetwork_System.Application.Dto.PatchDeveloperDto",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "CompleteDeveloperNetwork_System.Dto.DeveloperDto",
+        "Type": "CompleteDeveloperNetwork_System.Application.Dto.DeveloperDto",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -134,7 +134,7 @@
     ]
   },
   {
-    "ContainingType": "CompleteDeveloperNetwork_System.Controllers.DevelopersController",
+    "ContainingType": "CompleteDeveloperNetwork_System.Presentation.Controllers.DevelopersController",
     "Method": "DeleteDeveloper",
     "RelativePath": "api/Developers/{id}",
     "HttpMethod": "DELETE",
@@ -150,7 +150,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "CompleteDeveloperNetwork_System.Controllers.DevelopersController",
+    "ContainingType": "CompleteDeveloperNetwork_System.Presentation.Controllers.DevelopersController",
     "Method": "SearchDevelopers",
     "RelativePath": "api/Developers/search",
     "HttpMethod": "GET",
@@ -158,19 +158,24 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "username",
+        "Name": "search",
         "Type": "System.String",
         "IsRequired": false
       },
       {
-        "Name": "email",
-        "Type": "System.String",
+        "Name": "pageNumber",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageSize",
+        "Type": "System.Int32",
         "IsRequired": false
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[CompleteDeveloperNetwork_System.Dto.DeveloperDto, CompleteDeveloperNetwork-System, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CompleteDeveloperNetwork_System.Application.Dto.DeveloperDto, CompleteDeveloperNetwork-System, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -181,7 +186,7 @@
     ]
   },
   {
-    "ContainingType": "CompleteDeveloperNetwork_System.Controllers.ReadHobbiesController",
+    "ContainingType": "CompleteDeveloperNetwork_System.Presentation.Controllers.ReadHobbiesController",
     "Method": "GetHobbies",
     "RelativePath": "api/ReadHobbies",
     "HttpMethod": "GET",
@@ -201,7 +206,7 @@
     ]
   },
   {
-    "ContainingType": "CompleteDeveloperNetwork_System.Controllers.ReadHobbiesController",
+    "ContainingType": "CompleteDeveloperNetwork_System.Presentation.Controllers.ReadHobbiesController",
     "Method": "GetHobbies",
     "RelativePath": "api/ReadHobbies/{id}",
     "HttpMethod": "GET",
@@ -227,7 +232,7 @@
     ]
   },
   {
-    "ContainingType": "CompleteDeveloperNetwork_System.Controllers.ReadSkillsetsController",
+    "ContainingType": "CompleteDeveloperNetwork_System.Presentation.Controllers.ReadSkillsetsController",
     "Method": "GetSkillsets",
     "RelativePath": "api/ReadSkillsets",
     "HttpMethod": "GET",
@@ -247,7 +252,7 @@
     ]
   },
   {
-    "ContainingType": "CompleteDeveloperNetwork_System.Controllers.ReadSkillsetsController",
+    "ContainingType": "CompleteDeveloperNetwork_System.Presentation.Controllers.ReadSkillsetsController",
     "Method": "GetSkillsets",
     "RelativePath": "api/ReadSkillsets/{id}",
     "HttpMethod": "GET",
